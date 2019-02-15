@@ -22,6 +22,10 @@
     transition: opacity 180ms ease-in;
 }
 
+.xterm-rows {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace!important;
+}
+
 .xterm-screen {
     position: relative;
 }
