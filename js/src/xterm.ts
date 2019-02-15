@@ -12,7 +12,6 @@ export class Xterm {
     message: HTMLElement;
     messageTimeout: number;
     messageTimer: number;
-    sendResizeMsg: (colmuns: number, rows: number) => void;
 
 
     constructor(elem: HTMLElement) {
@@ -60,7 +59,6 @@ export class Xterm {
             window.addEventListener("resize", () => {
                 this.resizeListener();
             });
-            this.sendResizeMsg(this.term.cols, this.term.rows);
             if (document.addEventListener) {
                 //W3C
                 document.addEventListener('DOMMouseScroll', this.scrollListener, false);
@@ -102,7 +100,7 @@ export class Xterm {
                 let selection = this.term.getSelection();
                 copyTextToClipboard(selection);
             });
-        }, 4);
+        }, 500);
 
         this.term.open(elem);
 
@@ -152,7 +150,6 @@ export class Xterm {
     };
 
     onResize(callback: (colmuns: number, rows: number) => void) {
-        this.sendResizeMsg = callback;
         this.term.on("resize", (data) => {
             callback(data.cols, data.rows);
         });
