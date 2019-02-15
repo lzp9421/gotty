@@ -87,8 +87,10 @@ export class Xterm {
                 try {
                     document.execCommand('copy');
                     // console.log('复制内容 ' + msg)
+                    this.showMessage("已复制", this.messageTimeout);
                 } catch (err) {
                     // console.log('不能使用这种方法复制内容')
+                    // this.showMessage("复制失败", this.messageTimeout);
                 }
 
                 document.body.removeChild(textArea)
