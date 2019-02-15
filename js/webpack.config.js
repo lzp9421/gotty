@@ -1,9 +1,9 @@
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: "./src/main.ts",
     output: {
-        filename: "./dist/gotty-bundle.js"
+        filename: "./gotty-bundle.js"
     },
     devtool: "source-map",
     resolve: {
@@ -19,7 +19,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: /node_modules/,
-                loader: 'license-loader'
+                loader: 'babel-loader'
             }
         ]
     },

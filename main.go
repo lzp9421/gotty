@@ -11,19 +11,19 @@ import (
 
 	"github.com/codegangsta/cli"
 
-	"github.com/yudai/gotty/backend/localcommand"
-	"github.com/yudai/gotty/pkg/homedir"
-	"github.com/yudai/gotty/server"
-	"github.com/yudai/gotty/utils"
+	"gotty/backend/localcommand"
+	"gotty/pkg/homedir"
+	"gotty/server"
+	"gotty/utils"
 )
 
 func main() {
 	app := cli.NewApp()
 	app.Name = "gotty"
-	app.Version = Version + "+" + CommitID
+	app.Version = "2.0.0"
 	app.Usage = "Share your terminal as a web application"
 	app.HideHelp = true
-	cli.AppHelpTemplate = helpTemplate
+	//cli.AppHelpTemplate = helpTemplate
 
 	appOptions := &server.Options{}
 	if err := utils.ApplyDefaultValues(appOptions); err != nil {

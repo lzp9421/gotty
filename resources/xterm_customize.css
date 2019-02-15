@@ -1,9 +1,13 @@
 .terminal {
-    font-family: "DejaVu Sans Mono", "Everson Mono", FreeMono, Menlo, Terminal, monospace, "Apple Symbols";
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+.xterm-viewport {
+    display: none!important;
 }
 
 .xterm-overlay {
-    font-family: "DejaVu Sans Mono", "Everson Mono", FreeMono, Menlo, Terminal, monospace, "Apple Symbols";
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     border-radius: 15px;
     font-size: xx-large;
     color: black;
@@ -16,4 +20,8 @@
     transform: translate(-50%, -50%);
     user-select: none;
     transition: opacity 180ms ease-in;
+}
+
+.xterm-screen {
+    position: relative;
 }

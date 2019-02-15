@@ -85,14 +85,13 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 
 	go func() {
 		errs <- func() error {
-			buffer := make([]byte, wt.bufferSize)
 			for {
-				n, err := wt.masterConn.Read(buffer)
+				buffer, err := wt.masterConn.Read()
 				if err != nil {
 					return ErrMasterClosed
 				}
 
-				err = wt.handleMasterReadEvent(buffer[:n])
+				err = wt.handleMasterReadEvent(buffer)
 				if err != nil {
 					return err
 				}
