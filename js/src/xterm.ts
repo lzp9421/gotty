@@ -21,7 +21,8 @@ export class Xterm {
             scrollback: 100000,
             theme: {
                 selection: 'rgba(0, 0, 255, 0.6)'
-            }
+            },
+            tabStopWidth: 4
         });
 
         this.message = elem.ownerDocument ? elem.ownerDocument.createElement("div") : window.document.createElement("div");
@@ -99,7 +100,7 @@ export class Xterm {
                 let selection = this.term.getSelection();
                 copyTextToClipboard(selection);
             });
-        }, 4);
+        }, 400);
 
         this.term.open(elem);
 
