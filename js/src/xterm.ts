@@ -100,7 +100,7 @@ export class Xterm {
                 let selection = this.term.getSelection();
                 copyTextToClipboard(selection);
             });
-        }, 400);
+        }, 500);
 
         this.term.open(elem);
 
