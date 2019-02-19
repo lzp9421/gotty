@@ -87,12 +87,15 @@ export class Xterm {
                 textArea.select();
 
                 try {
-                    document.execCommand('copy');
-                    // console.log('复制内容 ' + msg)
-                    this.showMessage("已复制", this.messageTimeout);
+                    let result = document.execCommand('copy', false);
+                    if (result) {
+                        this.showMessage("已复制", this.messageTimeout);
+                    } else {
+                        throw new Error('复制失败');
+                    }
                 } catch (err) {
                     // console.log('不能使用这种方法复制内容')
-                    // this.showMessage("复制失败", this.messageTimeout);
+                    this.showMessage("请右键复制", this.messageTimeout);
                 }
 
                 document.body.removeChild(textArea)
