@@ -57,6 +57,7 @@ html, body {
     height: 42px;
     padding: 5px 3px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .btn .iconfont {
