@@ -10,6 +10,7 @@ export declare class Xterm {
     messageTimeout: number;
     messageTimer: number;
     constructor(elem: HTMLElement);
+    private initToolbar;
     info(): {
         columns: number;
         rows: number;

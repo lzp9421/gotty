@@ -1,6 +1,7 @@
 import {Terminal} from 'xterm';
 import {fit} from 'xterm/lib/addons/fit/fit';
 import {lib} from "libapps";
+import screenfull = require("screenfull");
 
 export class Xterm {
     elem: HTMLElement;
@@ -99,13 +100,84 @@ export class Xterm {
             this.term.on("selection", () => {
                 let selection = this.term.getSelection();
                 copyTextToClipboard(selection);
+                this.term.focus();
             });
+            this.term.focus();
+
         }, 500);
 
         this.term.open(elem);
 
         this.decoder = new lib.UTF8Decoder()
+        this.initToolbar();
     };
+
+    private initToolbar(): void {
+        // fullscreen:
+        let btn_fullscreen = document.querySelector('.btn-fullscreen');
+        if (btn_fullscreen) {
+            btn_fullscreen.addEventListener('click', () => {
+                if (!screenfull.enabled) { // 如果不允许进入全屏，发出不允许提示
+                    this.showMessage("不支持全屏", this.messageTimeout);
+                    return
+                }
+                screenfull.toggle();
+                let icon = document.querySelector('.btn-fullscreen .iconfont');
+                if (icon) {
+                    console.log(icon);
+                    if (screenfull.isFullscreen) {
+                        icon.classList.remove('icon-fullscreen-exit');
+                        icon.classList.add('icon-fullscreen');
+                    } else {
+                        icon.classList.remove('icon-fullscreen');
+                        icon.classList.add('icon-fullscreen-exit');
+                    }
+                }
+                this.term.focus();
+            });
+        }
+        // top
+        let btn_top = document.querySelector('.btn-top');
+        if (btn_top) {
+            btn_top.addEventListener('click', () => {
+                this.term.scrollToTop();
+                this.term.focus();
+            });
+        }
+        // bottom
+        let btn_bottom = document.querySelector('.btn-bottom');
+        if (btn_bottom) {
+            btn_bottom.addEventListener('click', () => {
+                this.term.scrollToBottom();
+                this.term.focus();
+            });
+        }
+        // select-all
+        let btn_select_all = document.querySelector('.btn-select-all');
+        if (btn_select_all) {
+            btn_select_all.addEventListener('click', () => {
+                this.term.selectAll();
+                this.term.focus();
+            });
+        }
+        // fixed
+        let btn_fixed = document.querySelector('.btn-fixed');
+        if (btn_fixed) {
+            btn_fixed.addEventListener('click', () => {
+                let toolbar = document.querySelector('#toolbar');
+                if (toolbar) {
+                    if (toolbar.classList.contains('right-0')) {
+                        toolbar.classList.remove('right-0');
+                        btn_fixed && btn_fixed.classList.remove('btn-selected');
+                    } else {
+                        toolbar.classList.add('right-0');
+                        btn_fixed && btn_fixed.classList.add('btn-selected');
+                    }
+                }
+                this.term.focus();
+            });
+        }
+    }
 
     info(): { columns: number, rows: number } {
         return {columns: this.term.cols, rows: this.term.rows};

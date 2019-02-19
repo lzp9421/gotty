@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "libapps": "github:yudai/libapps#release-hterm-1.70",
+    "screenfull": "^4.0.1",
     "xterm": "^3.11.0"
   },
   "devDependencies": {
