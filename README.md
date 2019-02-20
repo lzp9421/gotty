@@ -11,10 +11,11 @@ GoTTY是一个用于网页版的终端命令行工具，无需ssh即可实现命
 1. 将代码仓库放置$GOPATH/src中，使用`go get`安装依赖并自动构建，执行成功后，可在GOPATH/bin/下找到gotty执行文件。
 
 **手动构建**
-1. 在系统中安装go、nodejs环境，构建过程中会用到make命令，请自行准备。
-2. 本软件没有提供windows版本，所有如果你需要在Windows下编译此代码，请执行`set GOOS=linux`设置二进制文件的运行环境。
-2. 执行`make tools`安装构建过程中会使用到的命令行工具。注意需要将$GOPATH/bin目录加入到PATH变量中
-3. 执行`make all`即可。
+1. 修改此代码后重新打包，则需要进行手动构建。
+2. 在系统中安装go、nodejs环境，构建过程中会用到make命令，请自行准备。
+3. 此程序不能在Windows中使用，如果你需要在Windows下编译此代码，请执行`set GOOS=linux`进行交叉编译。
+4. 执行`make tools`安装构建过程中会使用到的命令行工具。注意需要将$GOPATH/bin目录加入到PATH变量中
+5. 执行`make all`即可。
 
 # 使用方法
 
