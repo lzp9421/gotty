@@ -1,7 +1,7 @@
 # ![](https://raw.githubusercontent.com/yudai/gotty/master/resources/favicon.png) GoTTY
 
 GoTTY是一个用于网页版的终端命令行工具，无需ssh即可实现命令交互。
-此版本fork于https://github.com/yudai/gotty，在功能上做了一些改善和增强。推荐使用chrome浏览器。
+此版本fork于[https://github.com/yudai/gotty](https://github.com/yudai/gotty)，在功能上做了一些改善和增强。推荐使用chrome浏览器。
 
 ![Screenshot](https://raw.githubusercontent.com/lzp9421/gotty/master/screenshot.png)
 
