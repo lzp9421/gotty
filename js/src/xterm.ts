@@ -2,6 +2,7 @@ import {Terminal} from 'xterm';
 import {fit} from 'xterm/lib/addons/fit/fit';
 import {lib} from "libapps";
 import screenfull = require("screenfull");
+import contextmenu = require("./contextmenu");
 
 export class Xterm {
     elem: HTMLElement;
@@ -111,8 +112,9 @@ export class Xterm {
 
         this.term.open(elem);
 
-        this.decoder = new lib.UTF8Decoder()
+        this.decoder = new lib.UTF8Decoder();
         this.initToolbar();
+        this.initContextMenu();
     };
 
     private initToolbar(): void {
@@ -180,6 +182,30 @@ export class Xterm {
                 this.term.focus();
             });
         }
+    }
+
+    private initContextMenu(): void {
+        let menu = contextmenu([
+            {
+                label: "New Item",
+                onclick: function (e){
+                    alert('ee');
+                }
+            },
+            {
+                hr: true
+            },
+            {
+                label: "Share\u2026",
+                children: [
+                    {
+                        label: "Twitter"
+                    }
+                ]
+            }
+        ]);
+
+        contextmenu.attach(document.querySelector(".terminal"), menu);
     }
 
     info(): { columns: number, rows: number } {

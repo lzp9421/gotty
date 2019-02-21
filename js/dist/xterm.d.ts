@@ -8,9 +8,9 @@ export declare class Xterm {
     message: HTMLElement;
     messageTimeout: number;
     messageTimer: number;
-    private resizeCallback;
     constructor(elem: HTMLElement);
     private initToolbar;
+    private initContextMenu;
     info(): {
         columns: number;
         rows: number;
