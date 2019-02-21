@@ -612,7 +612,7 @@
     }
 
     document.body.addEventListener("click", function (e) {
-        if (e.path.indexOf('cmenu') !== -1) {
+        if (e.path.indexOf('cmenu') === -1) {
             var m = menustack.pop();
             if (m) {
                 hideMenu(m);
