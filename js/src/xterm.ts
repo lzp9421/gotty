@@ -188,8 +188,10 @@ export class Xterm {
         let menu = contextmenu([
             {
                 label: "New Item",
-                onclick: function (e){
-                    alert('ee');
+                onclick: function (e) {
+                    if (e.composed) {
+                        alert('ee');
+                    }
                 }
             },
             {

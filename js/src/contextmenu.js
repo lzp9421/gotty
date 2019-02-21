@@ -116,8 +116,10 @@
         msl = menustack.length;
         //Pop contextmenus until the focused menu is at the top.
         a = menustack.indexOf(menu);
-        for (i = msl - 1; i > a; i--) {
-            popmenu();
+        if (a) {
+            for (i = msl - 1; i > a; i--) {
+                popmenu();
+            }
         }
     }
 
@@ -609,6 +611,14 @@
         })
     }
 
+    document.body.addEventListener("click", function (e) {
+        if (e.path.indexOf('cmenu') !== -1) {
+            var m = menustack.pop();
+            if (m) {
+                hideMenu(m);
+            }
+        }
+    });
 
     if (typeof define === "function" && define.amd) {
         define( "contextMenu", [], function () { return contextmenu; } );
