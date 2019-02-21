@@ -4,11 +4,11 @@ export declare class Xterm {
     elem: HTMLElement;
     term: Terminal;
     resizeListener: () => void;
-    scrollListener: (e: any) => void;
     decoder: lib.UTF8Decoder;
     message: HTMLElement;
     messageTimeout: number;
     messageTimer: number;
+    private resizeCallback;
     constructor(elem: HTMLElement);
     private initToolbar;
     info(): {
