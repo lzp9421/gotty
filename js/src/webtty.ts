@@ -137,7 +137,7 @@ export class WebTTY {
             });
 
             connection.open();
-        }
+        };
 
         setup();
         return () => {
