@@ -64,7 +64,7 @@ export class WebTTY {
 
         const setup = () => {
             connection.onOpen(() => {
-                // const termInfo = this.term.info();
+                const termInfo = this.term.info();
 
                 connection.send(JSON.stringify(
                     {
@@ -86,11 +86,8 @@ export class WebTTY {
                 };
 
                 this.term.onResize(resizeHandler);
-                // resizeHandler(termInfo.columns, termInfo.rows);
-                if ((<any>window).initTTY && typeof (<any>window).initTTY === 'function') {
-                    (<any>window).initTTY();
-                }
-                (<any>window).initTTY = true;
+                resizeHandler(termInfo.columns, termInfo.rows);
+
                 this.term.onInput(
                     (input: string) => {
                         connection.send(msgInput + input);
