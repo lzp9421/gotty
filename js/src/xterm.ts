@@ -15,8 +15,6 @@ export class Xterm {
     messageTimer: number;
 
 
-    private resizeCallback: (colmuns: number, rows: number) => void;
-
     constructor(elem: HTMLElement) {
         this.elem = elem;
         this.term = new Terminal({
@@ -58,6 +56,7 @@ export class Xterm {
         // };
 
         setTimeout(() => {
+            this.resizeListener();
             window.addEventListener("resize", () => {
                 this.resizeListener();
             });
@@ -69,15 +68,8 @@ export class Xterm {
             // this.term.on("scroll", () => {
             //     console.log('scroll');
             // });
-            if ((<any>window).initTTY === true) {
-                // ws初始化完成
-                this.resizeListener();
-                this.resizeCallback(this.term.cols, this.term.rows);
-            } else {
-                (<any>window).initTTY = this.resizeListener();
-            }
             let copyTextToClipboard = text => {
-                let textArea = document.createElement("textarea")
+                let textArea = document.createElement("textarea");
 
                 textArea.style.position = 'fixed';
                 textArea.style.top = '0';
@@ -115,7 +107,7 @@ export class Xterm {
             });
             this.term.focus();
 
-        });
+        }, 500);
 
         this.term.open(elem);
 
@@ -233,7 +225,6 @@ export class Xterm {
     };
 
     onResize(callback: (colmuns: number, rows: number) => void) {
-        this.resizeCallback = callback;
         this.term.on("resize", (data) => {
             callback(data.cols, data.rows);
         });
