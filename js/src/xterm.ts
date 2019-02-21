@@ -189,9 +189,7 @@ export class Xterm {
             {
                 label: "New Item",
                 onclick: function (e) {
-                    if (e.composed) {
-                        alert('ee');
-                    }
+                    alert('ee');
                 }
             },
             {

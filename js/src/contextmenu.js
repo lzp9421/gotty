@@ -506,7 +506,13 @@
                     menuitem = d.createElement("menuitem");
                     menuitem.setAttribute("label", xi.label);
                     if (xi.onclick) {
-                        menuitem.onclick = xi.onclick;
+                        (function (fn) {
+                            menuitem.onclick = function (ev) {
+                                if (ev.composed) {
+                                    fn(ev)
+                                }
+                            };
+                        })(xi.onclick);
                     }
                     if (xi.icon) {
                         menuitem.icon = xi.icon;
@@ -612,7 +618,7 @@
     }
 
     document.body.addEventListener("click", function (e) {
-        if (e.path.indexOf('cmenu') === -1) {
+        if (e.path.indexOf(document.querySelector('div._contextmenu_screen_')) === -1) {
             var m = menustack.pop();
             if (m) {
                 hideMenu(m);
