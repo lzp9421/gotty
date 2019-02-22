@@ -1,5 +1,5 @@
+@import "xterm_customize.css";
 html, body, #terminal {
-    background: black;
     height: 100%;
     width: 100%;
     padding: 0;

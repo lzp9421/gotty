@@ -2,6 +2,8 @@ import { Hterm } from "./hterm";
 import { Xterm } from "./xterm";
 import { Terminal, WebTTY, protocols } from "./webtty";
 import { ConnectionFactory } from "./websocket";
+import './css/main.css';
+import 'xterm/dist/xterm.css';
 
 // @TODO remove these
 declare var gotty_auth_token: string;

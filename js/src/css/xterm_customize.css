@@ -3,6 +3,8 @@ html, body {
 }
 .terminal {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+    height: 100%;
+    background: black;
 }
 
 .xterm-viewport {
@@ -28,7 +30,7 @@ html, body {
 .xterm-overlay {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     border-radius: 15px;
-    font-size: xx-large;
+    font-size: x-large;
     color: black;
     background: white;
     opacity: 0.75;
