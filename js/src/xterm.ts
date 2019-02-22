@@ -22,7 +22,8 @@ export class Xterm {
             theme: {
                 selection: 'rgba(0, 0, 255, 0.6)'
             },
-            tabStopWidth: 4
+            tabStopWidth: 4,
+            fontFamily: 'SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace'
         });
 
         this.message = elem.ownerDocument ? elem.ownerDocument.createElement("div") : window.document.createElement("div");
