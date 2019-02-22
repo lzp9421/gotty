@@ -7,8 +7,9 @@ module.exports = {
     },
     devtool: "source-map",
     resolve: {
-        extensions: [".ts", ".tsx", ".js"],
+        extensions: [".ts", ".tsx", ".js"]
     },
+    mode: 'production',
     module: {
         rules: [
             {
@@ -24,6 +25,19 @@ module.exports = {
         ]
     },
     plugins: [
-        new UglifyJSPlugin()
+        new UglifyJSPlugin({
+            uglifyOptions: {
+                compress: {
+                    warnings: false,
+                    drop_debugger: true, // console
+                    drop_console: true,
+                    pure_funcs:['console.log'] // 移除console
+                },
+                output: {
+                    comments: false
+                }
+            },
+            parallel: true
+        })
     ]
 };
